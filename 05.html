@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💛</title>
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(-45deg, #ffe4e6, #fdf2f8, #fef9c3, #f3e8ff);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      font-size: 18px;
+      opacity: 0.6;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Glow effect */
+    .glass-card {
+      box-shadow: 0 20px 60px rgba(255, 182, 193, 0.3);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-4 text-gray-800">
+    <div class="fixed top-5 left-5 z-50">
+        <a href="index.html"
+            class="group flex items-center gap-2 bg-white/30 backdrop-blur-xl border border-white/40 px-5 py-2.5 rounded-full text-sm text-gray-700 shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white/50">
+
+            <!-- Arrow Icon -->
+            <span class="transition group-hover:-translate-x-1">←</span>
+
+            <!-- Text -->
+            <span class="font-medium tracking-wide">
+            Back
+            </span>
+        </a>
+    </div>
+
+  <!-- Floating Hearts -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      heart.innerHTML = "💛";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- CARD -->
+  <div class="relative max-w-2xl w-full bg-white/70 backdrop-blur-2xl glass-card rounded-[2rem] p-6 md:p-10 border border-white/40">
+
+    <!-- Soft Glow Background -->
+    <div class="absolute -top-10 -left-10 w-40 h-40 bg-pink-300 rounded-full blur-3xl opacity-30"></div>
+    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow-300 rounded-full blur-3xl opacity-30"></div>
+
+    <!-- Header -->
+    <div class="text-center mb-6 relative">
+      <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 to-yellow-400 bg-clip-text text-transparent">
+        I'm Sorry 💛
+      </h1>
+      <p class="text-sm text-gray-500 mt-2">
+        For my Love, Lovey, Ai, Mahal, Baby
+      </p>
+    </div>
+
+    <!-- Message -->
+    <div class="space-y-5 text-sm md:text-base leading-relaxed text-gray-700 relative">
+
+      <p>
+        Love, lovey, Ai, mahal, baby... gusto ko mag sorry sa lahat ng nangyari kanina.
+      </p>
+
+      <p>
+        Alam ko naging emosyonal ako at nasabi ko yung mga bagay na hindi ko na dapat pinalaki pa.
+        Hindi ko rin naisip agad yung kalagayan mo kahit pareho tayong pagod at masama pakiramdam.
+      </p>
+
+      <p>
+        Naiintindihan ko na hindi mo sinasadya yung nangyari sa chat, at nag overthink lang talaga ako.
+        Nasaktan lang ako pero mali na hinayaan kong manaig yung nararamdaman ko kaysa intindihin ka.
+      </p>
+
+      <p>
+        Sorry kung naging unfair ako sayo, lalo na sa mga sinasabi ko na parang di mo ako pinapansin.
+        Alam ko nag reply ka naman at hindi mo ako iniignore.
+      </p>
+
+      <p>
+        Mahal, ayoko na palakihin pa yung ganito. Ayoko na masira yung meron tayo dahil lang sa misunderstanding.
+      </p>
+
+      <p>
+        Ingat ka palagi sa byahe mo papunta at pauwi galing work ha.
+        Galingan mo lagi — proud na proud ako sayo kahit hindi ko nasasabi palagi.
+      </p>
+
+      <p>
+        Love, nandito lang ako lagi para sayo. Hindi ako aalis.
+        Aayusin natin ‘to, okay?
+      </p>
+
+      <p class="font-semibold text-pink-500 text-center pt-4 text-lg">
+        I love you, always 💛
+      </p>
+    </div>
+
+    <!-- Button -->
+    <div class="mt-8 text-center relative">
+      <button 
+        onclick="showMessage()" 
+        class="px-8 py-3 bg-gradient-to-r from-pink-400 to-yellow-400 hover:scale-105 active:scale-95 text-white rounded-full shadow-lg transition duration-300 font-medium"
+      >
+        Tap me 🥺
+      </button>
+    </div>
+
+    <!-- Hidden Message -->
+    <div id="extraMessage" class="hidden mt-6 text-center text-sm text-gray-600">
+      Thank you for reading… I really mean everything I said 💛
+    </div>
+
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("extraMessage").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>

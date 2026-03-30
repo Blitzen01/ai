@@ -3,79 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Greetings</title>
+  <title>For My Love 💛</title>
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
-      background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 40%, #f3e8ff 100%);
+      background: linear-gradient(135deg, #fff7ed 0%, #fdf2f8 40%, #f3e8ff 100%);
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.6; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
     }
 
     .card-glow:hover {
-      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.25);
+      box-shadow: 0 25px 50px rgba(236, 72, 153, 0.25);
     }
   </style>
 </head>
 
 <body class="min-h-screen text-gray-800">
 
+  <!-- Floating Hearts -->
+  <script>
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      heart.innerHTML = "💛";
+      document.body.appendChild(heart);
+    }
+  </script>
+
   <!-- HEADER -->
-  <header class="text-center pt-24 pb-16 px-4">
-    <h1 class="text-5xl md:text-6xl font-bold mb-4">
-      My Greetings 💌
+  <header class="text-center pt-20 pb-14 px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-yellow-400 bg-clip-text text-transparent">
+      For My Love, Lovey, Ai, Mahal, Baby 💛
     </h1>
-    <p class="text-gray-500 text-sm md:text-base">
-      Every message has a meaning.
+    <p class="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
+      Hindi lahat ng tampuhan katapusan. Minsan, simula lang ulit ng mas maayos na pag-intindi sa isa’t isa.
     </p>
   </header>
 
   <!-- GRID -->
   <main class="max-w-5xl mx-auto px-6 pb-20">
-    <div id="greetingsGrid" class="grid gap-12 md:grid-cols-2"></div>
+    <div id="greetingsGrid" class="grid gap-10 md:grid-cols-2"></div>
   </main>
 
+  <!-- FOOTER -->
   <footer class="text-center text-gray-400 text-sm pb-10">
-    Made with ❤️
+    Made with love & sincerity 💛
   </footer>
 
   <script>
-    // 🔥 JUST ADD HERE NEXT TIME
     const greetings = [
       {
         file: "01.html",
         title: "For My Ai 💛",
-        desc: "The beginning. A message filled with sincerity and love.",
+        desc: "Simula ng pag-intindi at pag-aalaga sa nararamdaman mo.",
         emoji: "🌻"
       },
       {
         file: "02.html",
-        title: "Good Night, My Universe ❤️",
-        desc: "A calm and heartfelt message before the day ends.",
+        title: "Good Night, My Love 🌙",
+        desc: "Pahinga ka muna, nandito lang ako palagi.",
         emoji: "🌌"
       },
-
       {
         file: "03.html",
-        title: "Take Care Always 🌅",
-        desc: "A reminder that I’m proud of you and to always take care.",
+        title: "Take Care, Mahal 🌅",
+        desc: "Ingat ka sa araw-araw mong byahe, proud ako sayo palagi.",
         emoji: "🌅"
-        },
+      },
       {
         file: "04.html",
-        title: "I’m Sorry 🤍",
-        desc: "A sincere apology with reassurance and understanding.",
+        title: "I'm Sorry, Baby 🤍",
+        desc: "Hindi kita gustong masaktan. Aayusin ko ‘to.",
         emoji: "🌙"
       },
-      // 👉 FUTURE:
-      // {
-      //   file: "03.html",
-      //   title: "New Message",
-      //   desc: "Your description here",
-      //   emoji: "💖"
-      // }
-
+      {
+        file: "05.html",
+        title: "Us Again 💞",
+        desc: "Hindi tayo magkaaway, nagkakaintindihan lang ulit.",
+        emoji: "💞"
+      }
     ];
 
     const grid = document.getElementById("greetingsGrid");
@@ -85,12 +109,12 @@
       card.href = g.file;
 
       card.className =
-        "card-glow bg-white/80 backdrop-blur-lg rounded-3xl p-10 shadow-lg border border-white/50 transition duration-300 hover:-translate-y-3 block";
+        "card-glow bg-white/70 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 transition duration-300 hover:-translate-y-3 hover:scale-[1.02] block";
 
       card.innerHTML = `
-        <div class="text-4xl mb-6">${g.emoji}</div>
+        <div class="text-4xl mb-5">${g.emoji}</div>
 
-        <h2 class="text-2xl md:text-3xl font-semibold mb-3">
+        <h2 class="text-xl md:text-2xl font-semibold mb-3">
           ${g.title}
         </h2>
 
