@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>74 Days 💛</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1f2937, #0b1220);
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+    }
+
+    /* Floating emoji background */
+    .bg-emoji {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 22px;
+      opacity: 0.15;
+      animation: floatEmoji linear infinite;
+    }
+
+    @keyframes floatEmoji {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.2; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .glow {
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.10);
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .shine {
+      background: linear-gradient(90deg, #facc15, #f472b6, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center p-6 relative">
+
+  <!-- Emoji Background -->
+  <div class="bg-emoji" id="bgEmoji"></div>
+
+  <!-- Card -->
+  <div class="w-full max-w-3xl glass glow rounded-3xl p-6 md:p-10 text-white fade-in relative z-10">
+
+    <div class="text-center mb-8">
+      <h1 class="text-3xl md:text-5xl font-bold shine">74 Days 💛</h1>
+      <p class="text-sm md:text-base text-gray-300 mt-2">since we first met</p>
+    </div>
+
+    <div class="space-y-6 text-gray-200 leading-relaxed text-sm md:text-base">
+      <p>74 days since we first met… and honestly, ang dami nang nangyari in such a short time. Pero kahit ganun, every moment with you feels real and special. Hindi lang basta araw yung lumipas—each one became a memory that I’ll always keep, especially because it’s with you.</p>
+
+      <p>Sa loob ng 74 days na ‘to, mas nakilala kita, and mas lalo kitang na-appreciate. Yung mga simpleng usapan natin, yung tawanan, kahit yung mga tampuhan—lahat yun naging parte ng kung ano tayo ngayon. And kahit hindi perfect, I wouldn’t trade what we have for anything else.</p>
+
+      <p>May mga times na nahihirapan tayo, na parang ang gulo na ng lahat. Pero kahit ganun, ikaw pa rin yung gusto kong balikan. Ikaw pa rin yung pipiliin ko araw-araw, kahit may mga araw na hindi madali. Kasi para sakin, mas importante na nandito tayo, trying, kaysa sumuko.</p>
+
+      <p>Hindi ko alam kung ano mangyayari sa future, pero ang alam ko ngayon, mahalaga ka sakin. And I want to keep building more days, more memories, more reasons para mas maging strong pa tayo. Hindi lang 74 days—gusto ko pa ng mas madami, kasama ka.</p>
+
+      <p>So thank you for these 74 days… for staying, for trying, and for being you. I may not always say it perfectly, pero I truly care about you. And if papipiliin ako ulit, I’d still choose you—over and over again. 💛</p>
+    </div>
+
+    <div class="mt-10 text-center">
+      <button onclick="window.location.href='index.html'"
+        class="px-6 py-3 rounded-full bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-300 transition">
+        Back
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    const emojis = ["💛","🌙","✨","💖","💫"];
+    const container = document.getElementById("bgEmoji");
+
+    for (let i = 0; i < 25; i++) {
+      const span = document.createElement("span");
+      span.className = "emoji";
+      span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + "vw";
+      span.style.animationDuration = (6 + Math.random() * 6) + "s";
+      span.style.fontSize = (16 + Math.random() * 18) + "px";
+      container.appendChild(span);
+    }
+  </script>
+
+</body>
+</html>
