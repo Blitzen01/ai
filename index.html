@@ -19,7 +19,6 @@
         overflow-x: hidden;
       }
 
-<<<<<<< HEAD
       .heart {
         position: fixed;
         bottom: -10px;
@@ -27,15 +26,6 @@
         animation: floatUp 6s linear infinite;
         opacity: 0.6;
       }
-=======
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.6;
-    }
->>>>>>> a31e74ce730ac82c84d435e832a30af4a91eacac
 
       @keyframes floatUp {
         0% {
@@ -138,33 +128,10 @@
       <div id="greetingsGrid" class="grid gap-10 md:grid-cols-2"></div>
     </main>
 
-<<<<<<< HEAD
     <!-- FOOTER -->
     <footer class="text-center text-gray-400 text-sm pb-10">
       Made with love & sincerity 💛
     </footer>
-=======
-  <script>
-
-    /* ===== YOUR ORIGINAL 9 MESSAGES (UNCHANGED) ===== */
-    const greetings = [
-      { file:"01.html", title:"For My Ai 💛", desc:"Simula ng pag-intindi at pag-aalaga sa nararamdaman mo.", emoji:"🌻" },
-      { file:"02.html", title:"Good Night, My Love 🌙", desc:"Pahinga ka muna, nandito lang ako palagi.", emoji:"🌌" },
-      { file:"03.html", title:"Take Care, Mahal 🌅", desc:"Ingat ka sa araw-araw mong byahe, proud ako sayo palagi.", emoji:"🌅" },
-      { file:"04.html", title:"I'm Sorry, Baby 🤍", desc:"Hindi kita gustong masaktan. Aayusin ko ‘to.", emoji:"🌙" },
-      { file:"05.html", title:"Us Again 💞", desc:"Hindi tayo magkaaway, nagkakaintindihan lang ulit.", emoji:"💞" },
-      { file:"06.html", title:"For My Ai 💛", desc:"Mahal kita palagi.", emoji:"🌻" },
-      { file:"07.html", title:"For Us, Love 💛", desc:"Hindi ako susuko sa atin. Ayusin natin ‘to.", emoji:"💛" },
-      { file:"08.html", title:"A Letter For You 🤎", desc:"Isang sulat mula sa puso ko para sayo.", emoji:"📜" },
-      { file:"09.html", title:"74 Days With You 💛", desc:"74 days since we first met.", emoji:"💛" },
-    ];
-
-    /* ===== NEW: MONTHSARY SECTION ===== */
-    const monthsary = [
-      { file:"ms1.html", title:"1st Monthsary 💛", desc:"Our first month together.", emoji:"🌻" },
-      { file:"ms2.html", title:"2nd Monthsary 💛", desc:"Two months of love.", emoji:"✨" }
-    ];
->>>>>>> a31e74ce730ac82c84d435e832a30af4a91eacac
 
     <script>
       /* ===== YOUR ORIGINAL 9 MESSAGES (UNCHANGED) ===== */
@@ -225,7 +192,6 @@
         },
       ];
 
-<<<<<<< HEAD
       /* ===== NEW: MONTHSARY SECTION ===== */
       const monthsary = [
         {
@@ -303,62 +269,4 @@
       render(greetings);
     </script>
   </body>
-=======
-    function render(data) {
-      grid.innerHTML = "";
-
-      data.forEach((g, index) => {
-        const card = document.createElement("a");
-        card.href = g.file;
-
-        card.className =
-          "card-glow bg-white/70 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 transition duration-300 hover:-translate-y-3 hover:scale-[1.02] block";
-
-        card.innerHTML = `
-          <div class="text-4xl mb-5">${g.emoji}</div>
-          <h2 class="text-xl md:text-2xl font-semibold mb-3">${g.title}</h2>
-          <p class="text-gray-500 text-sm leading-relaxed">${g.desc}</p>
-          <div class="mt-6 text-xs text-gray-400 uppercase tracking-widest">
-            Item ${index + 1}
-          </div>
-        `;
-
-        grid.appendChild(card);
-      });
-    }
-
-    /* ===== TAB SWITCH ===== */
-    function showTab(type) {
-
-      const msgBtn = document.getElementById("msgBtn");
-      const monBtn = document.getElementById("monBtn");
-
-      if (type === "messages") {
-        render(greetings);
-
-        msgBtn.classList.add("bg-pink-500","text-white");
-        msgBtn.classList.remove("bg-white/70");
-
-        monBtn.classList.remove("bg-pink-500","text-white");
-        monBtn.classList.add("bg-white/70");
-      }
-
-      if (type === "monthsary") {
-        render(monthsary);
-
-        monBtn.classList.add("bg-pink-500","text-white");
-        monBtn.classList.remove("bg-white/70");
-
-        msgBtn.classList.remove("bg-pink-500","text-white");
-        msgBtn.classList.add("bg-white/70");
-      }
-    }
-
-    /* DEFAULT LOAD */
-    render(greetings);
-
-  </script>
-
-</body>
->>>>>>> a31e74ce730ac82c84d435e832a30af4a91eacac
 </html>
