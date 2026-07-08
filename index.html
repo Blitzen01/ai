@@ -1,123 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For My Love 💛</title>
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Love 💛</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    body {
-      background: linear-gradient(135deg, #fff7ed 0%, #fdf2f8 40%, #f3e8ff 100%);
-      overflow-x: hidden;
-    }
+    <style>
+      body {
+        background: linear-gradient(
+          135deg,
+          #fff7ed 0%,
+          #fdf2f8 40%,
+          #f3e8ff 100%
+        );
+        overflow-x: hidden;
+      }
 
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.6;
-    }
+      .heart {
+        position: fixed;
+        bottom: -10px;
+        font-size: 20px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.6;
+      }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 0.6; }
-      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
-    }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-110vh) scale(1.5);
+          opacity: 0;
+        }
+      }
 
-    .card-glow:hover {
-      box-shadow: 0 25px 50px rgba(236, 72, 153, 0.25);
-    }
-  </style>
-</head>
+      .card-glow:hover {
+        box-shadow: 0 25px 50px rgba(236, 72, 153, 0.25);
+      }
+    </style>
+  </head>
 
-<body class="min-h-screen text-gray-800">
+  <body class="min-h-screen text-gray-800">
+    <!-- Floating Hearts -->
+    <script>
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+        heart.innerHTML = "💛";
+        document.body.appendChild(heart);
+      }
+    </script>
 
-  <!-- Floating Hearts -->
-  <script>
-    for (let i = 0; i < 15; i++) {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-      heart.innerHTML = "💛";
-      document.body.appendChild(heart);
-    }
-  </script>
+    <!-- HEADER -->
+    <header class="text-center pt-20 pb-10 px-4">
+      <h1
+        class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-yellow-400 bg-clip-text text-transparent"
+      >
+        For My Love, Lovey, Ai, Mahal, Baby 💛
+      </h1>
+      <p class="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
+        Hindi lahat ng tampuhan katapusan. Minsan, simula lang ulit ng mas
+        maayos na pag-intindi sa isa’t isa.
+      </p>
+    </header>
 
-  <!-- HEADER -->
-  <header class="text-center pt-20 pb-10 px-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-yellow-400 bg-clip-text text-transparent">
-      For My Love, Lovey, Ai, Mahal, Baby 💛
-    </h1>
-    <p class="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
-      Hindi lahat ng tampuhan katapusan. Minsan, simula lang ulit ng mas maayos na pag-intindi sa isa’t isa.
-    </p>
-  </header>
+    <!-- ✅ ADDED TABS (NEW ONLY) -->
+    <div class="flex justify-center gap-4 mb-10 px-4">
+      <button
+        id="msgBtn"
+        onclick="showTab('messages')"
+        class="px-6 py-3 rounded-full bg-pink-500 text-white font-semibold shadow"
+      >
+        💌 Messages
+      </button>
 
-  <!-- ✅ ADDED TABS (NEW ONLY) -->
-  <div class="flex justify-center gap-4 mb-10 px-4">
+      <button
+        id="monBtn"
+        onclick="showTab('monthsary')"
+        class="px-6 py-3 rounded-full bg-white/70 font-semibold shadow"
+      >
+        💛 Monthsary Greeting
+      </button>
+    </div>
 
-    <button id="msgBtn"
-      onclick="showTab('messages')"
-      class="px-6 py-3 rounded-full bg-pink-500 text-white font-semibold shadow">
-      💌 Messages
-    </button>
+    <!-- GRID -->
+    <main class="max-w-5xl mx-auto px-6 pb-20">
+      <div id="greetingsGrid" class="grid gap-10 md:grid-cols-2"></div>
+    </main>
 
-    <button id="monBtn"
-      onclick="showTab('monthsary')"
-      class="px-6 py-3 rounded-full bg-white/70 font-semibold shadow">
-      💛 Monthsary Greeting
-    </button>
+    <!-- FOOTER -->
+    <footer class="text-center text-gray-400 text-sm pb-10">
+      Made with love & sincerity 💛
+    </footer>
 
-  </div>
+    <script>
+      /* ===== YOUR ORIGINAL 9 MESSAGES (UNCHANGED) ===== */
+      const greetings = [
+        {
+          file: "01.html",
+          title: "For My Ai 💛",
+          desc: "Simula ng pag-intindi at pag-aalaga sa nararamdaman mo.",
+          emoji: "🌻",
+        },
+        {
+          file: "02.html",
+          title: "Good Night, My Love 🌙",
+          desc: "Pahinga ka muna, nandito lang ako palagi.",
+          emoji: "🌌",
+        },
+        {
+          file: "03.html",
+          title: "Take Care, Mahal 🌅",
+          desc: "Ingat ka sa araw-araw mong byahe, proud ako sayo palagi.",
+          emoji: "🌅",
+        },
+        {
+          file: "04.html",
+          title: "I'm Sorry, Baby 🤍",
+          desc: "Hindi kita gustong masaktan. Aayusin ko ‘to.",
+          emoji: "🌙",
+        },
+        {
+          file: "05.html",
+          title: "Us Again 💞",
+          desc: "Hindi tayo magkaaway, nagkakaintindihan lang ulit.",
+          emoji: "💞",
+        },
+        {
+          file: "06.html",
+          title: "For My Ai 💛",
+          desc: "Mahal kita palagi.",
+          emoji: "🌻",
+        },
+        {
+          file: "07.html",
+          title: "For Us, Love 💛",
+          desc: "Hindi ako susuko sa atin. Ayusin natin ‘to.",
+          emoji: "💛",
+        },
+        {
+          file: "08.html",
+          title: "A Letter For You 🤎",
+          desc: "Isang sulat mula sa puso ko para sayo.",
+          emoji: "📜",
+        },
+        {
+          file: "09.html",
+          title: "74 Days With You 💛",
+          desc: "74 days since we first met.",
+          emoji: "💛",
+        },
+      ];
 
-  <!-- GRID -->
-  <main class="max-w-5xl mx-auto px-6 pb-20">
-    <div id="greetingsGrid" class="grid gap-10 md:grid-cols-2"></div>
-  </main>
+      /* ===== NEW: MONTHSARY SECTION ===== */
+      const monthsary = [
+        {
+          file: "ms1.html",
+          title: "1st Monthsary 💛",
+          desc: "Our first month together.",
+          emoji: "🌻",
+        },
+        {
+          file: "ms2.html",
+          title: "2nd Monthsary 💛",
+          desc: "Two months of love.",
+          emoji: "✨",
+        },
+        {
+          file: "ms3.html",
+          title: "3rd Monthsary 💛",
+          desc: "Three months with the one I love. Thank you for staying, loving me, and choosing us every day.",
+          emoji: "💌",
+        },
+      ];
 
-  <!-- FOOTER -->
-  <footer class="text-center text-gray-400 text-sm pb-10">
-    Made with love & sincerity 💛
-  </footer>
+      const grid = document.getElementById("greetingsGrid");
 
-  <script>
+      function render(data) {
+        grid.innerHTML = "";
 
-    /* ===== YOUR ORIGINAL 9 MESSAGES (UNCHANGED) ===== */
-    const greetings = [
-      { file:"01.html", title:"For My Ai 💛", desc:"Simula ng pag-intindi at pag-aalaga sa nararamdaman mo.", emoji:"🌻" },
-      { file:"02.html", title:"Good Night, My Love 🌙", desc:"Pahinga ka muna, nandito lang ako palagi.", emoji:"🌌" },
-      { file:"03.html", title:"Take Care, Mahal 🌅", desc:"Ingat ka sa araw-araw mong byahe, proud ako sayo palagi.", emoji:"🌅" },
-      { file:"04.html", title:"I'm Sorry, Baby 🤍", desc:"Hindi kita gustong masaktan. Aayusin ko ‘to.", emoji:"🌙" },
-      { file:"05.html", title:"Us Again 💞", desc:"Hindi tayo magkaaway, nagkakaintindihan lang ulit.", emoji:"💞" },
-      { file:"06.html", title:"For My Ai 💛", desc:"Mahal kita palagi.", emoji:"🌻" },
-      { file:"07.html", title:"For Us, Love 💛", desc:"Hindi ako susuko sa atin. Ayusin natin ‘to.", emoji:"💛" },
-      { file:"08.html", title:"A Letter For You 🤎", desc:"Isang sulat mula sa puso ko para sayo.", emoji:"📜" },
-      { file:"09.html", title:"74 Days With You 💛", desc:"74 days since we first met.", emoji:"💛" },
-    ];
+        data.forEach((g, index) => {
+          const card = document.createElement("a");
+          card.href = g.file;
 
-    /* ===== NEW: MONTHSARY SECTION ===== */
-    const monthsary = [
-      { file:"ms1.html", title:"1st Monthsary 💛", desc:"Our first month together.", emoji:"🌻" },
-      { file:"ms2.html", title:"2nd Monthsary 💛", desc:"Two months of love.", emoji:"✨" }
-    ];
+          card.className =
+            "card-glow bg-white/70 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 transition duration-300 hover:-translate-y-3 hover:scale-[1.02] block";
 
-    const grid = document.getElementById("greetingsGrid");
-
-    function render(data) {
-      grid.innerHTML = "";
-
-      data.forEach((g, index) => {
-        const card = document.createElement("a");
-        card.href = g.file;
-
-        card.className =
-          "card-glow bg-white/70 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-xl border border-white/50 transition duration-300 hover:-translate-y-3 hover:scale-[1.02] block";
-
-        card.innerHTML = `
+          card.innerHTML = `
           <div class="text-4xl mb-5">${g.emoji}</div>
           <h2 class="text-xl md:text-2xl font-semibold mb-3">${g.title}</h2>
           <p class="text-gray-500 text-sm leading-relaxed">${g.desc}</p>
@@ -126,41 +201,38 @@
           </div>
         `;
 
-        grid.appendChild(card);
-      });
-    }
-
-    /* ===== TAB SWITCH ===== */
-    function showTab(type) {
-
-      const msgBtn = document.getElementById("msgBtn");
-      const monBtn = document.getElementById("monBtn");
-
-      if (type === "messages") {
-        render(greetings);
-
-        msgBtn.classList.add("bg-pink-500","text-white");
-        msgBtn.classList.remove("bg-white/70");
-
-        monBtn.classList.remove("bg-pink-500","text-white");
-        monBtn.classList.add("bg-white/70");
+          grid.appendChild(card);
+        });
       }
 
-      if (type === "monthsary") {
-        render(monthsary);
+      /* ===== TAB SWITCH ===== */
+      function showTab(type) {
+        const msgBtn = document.getElementById("msgBtn");
+        const monBtn = document.getElementById("monBtn");
 
-        monBtn.classList.add("bg-pink-500","text-white");
-        monBtn.classList.remove("bg-white/70");
+        if (type === "messages") {
+          render(greetings);
 
-        msgBtn.classList.remove("bg-pink-500","text-white");
-        msgBtn.classList.add("bg-white/70");
+          msgBtn.classList.add("bg-pink-500", "text-white");
+          msgBtn.classList.remove("bg-white/70");
+
+          monBtn.classList.remove("bg-pink-500", "text-white");
+          monBtn.classList.add("bg-white/70");
+        }
+
+        if (type === "monthsary") {
+          render(monthsary);
+
+          monBtn.classList.add("bg-pink-500", "text-white");
+          monBtn.classList.remove("bg-white/70");
+
+          msgBtn.classList.remove("bg-pink-500", "text-white");
+          msgBtn.classList.add("bg-white/70");
+        }
       }
-    }
 
-    /* DEFAULT LOAD */
-    render(greetings);
-
-  </script>
-
-</body>
+      /* DEFAULT LOAD */
+      render(greetings);
+    </script>
+  </body>
 </html>
