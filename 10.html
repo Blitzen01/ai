@@ -245,18 +245,7 @@
 
                 z-index:999;
 
-            }
-
-            /* ===========================
-            MUSIC BUTTON
-            =========================== */
-
-            #musicBtn{
-
-                z-index:999;
-
-                animation:pulse 2s infinite;
-
+            
             }
 
             /* ===========================
@@ -773,15 +762,6 @@
 
     </button>
 
-    <!-- Music Button -->
-
-    <button
-    id="musicBtn"
-    class="fixed bottom-8 left-8 w-14 h-14 rounded-full bg-blue-500 text-white text-2xl shadow-xl">
-
-    🎵
-
-    </button>
 
     <script>
 
@@ -903,29 +883,6 @@
 
         };
 
-        // ===============================
-        // MUSIC BUTTON UI
-        // ===============================
-
-        let playing=false;
-
-        const music=document.getElementById("musicBtn");
-
-        music.onclick=()=>{
-
-        playing=!playing;
-
-        music.innerHTML=playing?"⏸️":"🎵";
-
-        music.style.transform="scale(1.2)";
-
-        setTimeout(()=>{
-
-        music.style.transform="scale(1)";
-
-        },200);
-
-        };
 
         // ===============================
         // HERO TYPEWRITER
