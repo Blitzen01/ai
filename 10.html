@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>So Proud of You 💙💛</title>
+        <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+        <style>
+            /* ===========================
+            GLOBAL
+            =========================== */
+
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+            }
+
+            html{
+                scroll-behavior:smooth;
+            }
+
+            body{
+                font-family:'Poppins',sans-serif;
+                background:
+                radial-gradient(circle at top,#244a8d 0%,#0f172a 45%,#020617 100%);
+                overflow-x:hidden;
+                position:relative;
+            }
+
+            /* ===========================
+            CUSTOM SCROLLBAR
+            =========================== */
+
+            ::-webkit-scrollbar{
+                width:10px;
+            }
+
+            ::-webkit-scrollbar-track{
+                background:#0f172a;
+            }
+
+            ::-webkit-scrollbar-thumb{
+                background:#3B82F6;
+                border-radius:20px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover{
+                background:#FACC15;
+            }
+
+            /* ===========================
+            HERO TITLE
+            =========================== */
+
+            #typingTitle{
+                font-family:'Dancing Script',cursive;
+                color:white;
+                text-shadow:
+                    0 0 15px #3B82F6,
+                    0 0 35px #3B82F6;
+            }
+
+            /* ===========================
+            BUTTONS
+            =========================== */
+
+            button{
+                transition:.35s;
+            }
+
+            button:hover{
+                transform:translateY(-5px) scale(1.05);
+                box-shadow:
+                    0 0 20px #3B82F6,
+                    0 0 40px #FACC15;
+            }
+
+            /* ===========================
+            GLASS EFFECT
+            =========================== */
+
+            .card,
+            #letter .rounded-3xl,
+            section:last-child .rounded-3xl{
+
+                background:rgba(255,255,255,.08);
+
+                backdrop-filter:blur(18px);
+
+                border:1px solid rgba(255,255,255,.15);
+
+                box-shadow:
+                    0 10px 40px rgba(0,0,0,.35);
+
+            }
+
+            .card{
+                transition:.4s;
+            }
+
+            .card:hover{
+
+                transform:
+                    translateY(-12px)
+                    scale(1.04);
+
+                border-color:#FACC15;
+
+                box-shadow:
+                    0 0 30px rgba(59,130,246,.7),
+                    0 0 60px rgba(250,204,21,.35);
+
+            }
+
+            /* ===========================
+            QUOTE
+            =========================== */
+
+            section:nth-last-of-type(2) h2{
+
+                color:white;
+
+                text-shadow:
+                    0 0 20px #3B82F6,
+                    0 0 45px #FACC15;
+
+            }
+
+            /* ===========================
+            LETTER
+            =========================== */
+
+            #letter p{
+
+                opacity:0;
+
+                transform:translateY(40px);
+
+                animation:fadeUp .8s forwards;
+
+            }
+
+            #letter p:nth-child(1){animation-delay:.1s;}
+            #letter p:nth-child(2){animation-delay:.2s;}
+            #letter p:nth-child(3){animation-delay:.3s;}
+            #letter p:nth-child(4){animation-delay:.4s;}
+            #letter p:nth-child(5){animation-delay:.5s;}
+            #letter p:nth-child(6){animation-delay:.6s;}
+            #letter p:nth-child(7){animation-delay:.7s;}
+            #letter p:nth-child(8){animation-delay:.8s;}
+            #letter p:nth-child(9){animation-delay:.9s;}
+            #letter p:nth-child(10){animation-delay:1s;}
+            #letter p:nth-child(11){animation-delay:1.1s;}
+            #letter p:nth-child(12){animation-delay:1.2s;}
+            #letter p:nth-child(13){animation-delay:1.3s;}
+            #letter p:nth-child(14){animation-delay:1.4s;}
+            #letter p:nth-child(15){animation-delay:1.5s;}
+            #letter p:nth-child(16){animation-delay:1.6s;}
+            #letter p:nth-child(17){animation-delay:1.7s;}
+            #letter p:nth-child(18){animation-delay:1.8s;}
+            #letter p:nth-child(19){animation-delay:1.9s;}
+            #letter p:nth-child(20){animation-delay:2s;}
+
+            /* ===========================
+            HEARTS
+            =========================== */
+
+            #hearts{
+
+                position:fixed;
+
+                inset:0;
+
+                pointer-events:none;
+
+                overflow:hidden;
+
+                z-index:1;
+
+            }
+
+            .heart{
+
+                position:absolute;
+
+                font-size:24px;
+
+                animation:floatHeart linear infinite;
+
+                opacity:.8;
+
+                user-select:none;
+
+            }
+
+            /* ===========================
+            STARS
+            =========================== */
+
+            #sparkles{
+
+                position:fixed;
+
+                inset:0;
+
+                pointer-events:none;
+
+                z-index:0;
+
+            }
+
+            .star{
+
+                position:absolute;
+
+                width:4px;
+
+                height:4px;
+
+                background:white;
+
+                border-radius:50%;
+
+                animation:twinkle 2.5s infinite;
+
+            }
+
+            /* ===========================
+            TOP BUTTON
+            =========================== */
+
+            #topBtn{
+
+                display:none;
+
+                z-index:999;
+
+            }
+
+            /* ===========================
+            MUSIC BUTTON
+            =========================== */
+
+            #musicBtn{
+
+                z-index:999;
+
+                animation:pulse 2s infinite;
+
+            }
+
+            /* ===========================
+            GLOWING BORDER
+            =========================== */
+
+            .rounded-3xl{
+
+                position:relative;
+
+            }
+
+            .rounded-3xl::before{
+
+                content:"";
+
+                position:absolute;
+
+                inset:-2px;
+
+                border-radius:inherit;
+
+                background:
+                linear-gradient(
+                    135deg,
+                    #3B82F6,
+                    #FACC15,
+                    #3B82F6
+                );
+
+                z-index:-1;
+
+                opacity:.25;
+
+                filter:blur(10px);
+
+            }
+
+            /* ===========================
+            ANIMATIONS
+            =========================== */
+
+            @keyframes floatHeart{
+
+            0%{
+
+            transform:
+            translateY(100vh)
+            rotate(0deg);
+
+            opacity:0;
+
+            }
+
+            10%{
+
+            opacity:1;
+
+            }
+
+            100%{
+
+            transform:
+            translateY(-120vh)
+            rotate(360deg);
+
+            opacity:0;
+
+            }
+
+            }
+
+            @keyframes twinkle{
+
+            0%,100%{
+
+            opacity:.2;
+            transform:scale(1);
+
+            }
+
+            50%{
+
+            opacity:1;
+            transform:scale(2);
+
+            }
+
+            }
+
+            @keyframes pulse{
+
+            0%{
+
+            transform:scale(1);
+
+            }
+
+            50%{
+
+            transform:scale(1.1);
+
+            }
+
+            100%{
+
+            transform:scale(1);
+
+            }
+
+            }
+
+            @keyframes fadeUp{
+
+            to{
+
+            opacity:1;
+
+            transform:translateY(0);
+
+            }
+
+            }
+
+            /* ===========================
+            FADE ON SCROLL
+            =========================== */
+
+            .fade{
+
+                opacity:0;
+
+                transform:translateY(60px);
+
+                transition:1s;
+
+            }
+
+            .fade.show{
+
+                opacity:1;
+
+                transform:none;
+
+            }
+
+            /* ===========================
+            MOBILE
+            =========================== */
+
+            @media(max-width:768px){
+
+            #typingTitle{
+
+            font-size:3.5rem;
+
+            }
+
+            section{
+
+            padding-top:70px;
+
+            padding-bottom:70px;
+
+            }
+
+            .card{
+
+            padding:2rem;
+
+            }
+
+            }
+        </style>
+
+    </head>
+
+    <body class="bg-slate-950 text-white overflow-x-hidden">
+    <a href="index.html"
+        class="fixed top-5 left-5 z-50 px-5 py-3 rounded-full bg-gradient-to-r from-blue-500 to-yellow-400 text-black font-bold shadow-xl hover:scale-110 transition duration-300">
+
+            💙⬅ Back
+
+    </a>
+    <!-- Floating Hearts -->
+    <div id="hearts"></div>
+
+    <!-- Sparkles -->
+    <div id="sparkles"></div>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="min-h-screen flex items-center justify-center relative px-6">
+
+        <div class="text-center max-w-4xl z-10">
+
+            <p class="text-yellow-300 text-xl mb-4">
+                💙💛
+            </p>
+
+            <h1 id="typingTitle"
+                class="text-5xl md:text-8xl font-extrabold leading-tight">
+                I'm So Proud of You
+            </h1>
+
+            <p class="mt-8 text-lg md:text-2xl text-gray-300">
+
+                No matter what happens,
+                I'll always be proud of you.
+
+            </p>
+
+            <button
+                onclick="document.getElementById('letter').scrollIntoView({behavior:'smooth'})"
+                class="mt-12 px-8 py-4 rounded-full bg-yellow-400 text-black font-bold text-lg hover:scale-105 duration-300">
+
+                Read My Letter 💌
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= LETTER ================= -->
+
+    <section id="letter" class="py-24 px-6">
+
+    <div class="max-w-5xl mx-auto">
+
+    <div class="rounded-3xl p-10 backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl">
+
+    <h2 class="text-5xl text-center font-bold mb-12">
+
+    💌 My Letter
+
+    </h2>
+
+    <div class="space-y-7 text-lg leading-9 text-gray-200">
+
+    <p>My Love,</p>
+
+    <p>
+    I just want you to know how incredibly proud I am of you.
+    </p>
+
+    <p>
+    Every challenge you face, every effort you make, and every little achievement you accomplish reminds me how strong and amazing you truly are.
+    </p>
+
+    <p>
+    Even when you think you're not doing enough, I see someone who's always trying their best.
+    </p>
+
+    <p>
+    I admire your determination, your kindness, your beautiful heart, and the way you never give up.
+    </p>
+
+    <p>
+    Please never forget how amazing you are.
+    </p>
+
+    <p>
+    I also want you to always take care of yourself.
+    </p>
+
+    <p>
+    Please eat your meals on time.
+    </p>
+
+    <p>
+    Drink lots of water.
+    </p>
+
+    <p>
+    Get enough sleep.
+    </p>
+
+    <p>
+    Don't push yourself too hard.
+    </p>
+
+    <p>
+    Whenever you're tired, remember that it's okay to rest.
+    </p>
+
+    <p>
+    Your health and happiness mean everything to me.
+    </p>
+
+    <p>
+    I'll always support you.</p>
+
+    <p>
+    I'll always cheer for you.
+    </p>
+
+    <p>
+    I'll always believe in you.
+    </p>
+
+    <p>
+    And I'll always be proud of you.
+    </p>
+
+    <p>
+    No matter where life takes us, I hope you never stop believing in yourself because I believe in you with all my heart.
+    </p>
+
+    <p>
+    I love you so much.
+    </p>
+
+    <p>
+    Take care always, my love.
+    </p>
+
+    <p class="text-center text-3xl">
+
+    💙💛
+
+    </p>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </section>
+
+    <!-- ================= REMINDERS ================= -->
+
+    <section class="py-20 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+    <h2 class="text-5xl text-center font-bold mb-16">
+
+    Little Reminders 💛
+
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+
+    <div class="card rounded-3xl p-8 bg-white/10 backdrop-blur-lg border border-white/20 text-center">
+
+    <div class="text-6xl mb-5">🍚</div>
+
+    <h3 class="text-2xl font-bold">
+
+    Eat on Time
+
+    </h3>
+
+    <p class="mt-4 text-gray-300">
+
+    Don't skip your meals.
+
+    </p>
+
+    </div>
+
+    <div class="card rounded-3xl p-8 bg-white/10 backdrop-blur-lg border border-white/20 text-center">
+
+    <div class="text-6xl mb-5">💧</div>
+
+    <h3 class="text-2xl font-bold">
+
+    Drink Water
+
+    </h3>
+
+    <p class="mt-4 text-gray-300">
+
+    Stay hydrated every day.
+
+    </p>
+
+    </div>
+
+    <div class="card rounded-3xl p-8 bg-white/10 backdrop-blur-lg border border-white/20 text-center">
+
+    <div class="text-6xl mb-5">😴</div>
+
+    <h3 class="text-2xl font-bold">
+
+    Rest Well
+
+    </h3>
+
+    <p class="mt-4 text-gray-300">
+
+    Your body deserves enough sleep.
+
+    </p>
+
+    </div>
+
+    <div class="card rounded-3xl p-8 bg-white/10 backdrop-blur-lg border border-white/20 text-center">
+
+    <div class="text-6xl mb-5">😊</div>
+
+    <h3 class="text-2xl font-bold">
+
+    Keep Smiling
+
+    </h3>
+
+    <p class="mt-4 text-gray-300">
+
+    Your smile brightens my world.
+
+    </p>
+
+    </div>
+
+    <div class="card rounded-3xl p-8 bg-white/10 backdrop-blur-lg border border-white/20 text-center">
+
+    <div class="text-6xl mb-5">💙</div>
+
+    <h3 class="text-2xl font-bold">
+
+    Believe in Yourself
+
+    </h3>
+
+    <p class="mt-4 text-gray-300">
+
+    I'll always believe in you.
+
+    </p>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </section>
+
+    <!-- ================= QUOTE ================= -->
+
+    <section class="py-32 px-6">
+
+    <div class="max-w-4xl mx-auto text-center">
+
+    <h2 class="text-5xl md:text-7xl font-bold leading-relaxed">
+
+    "No matter what happens...
+
+    <br><br>
+
+    I'll always be proud of you."
+
+    </h2>
+
+    </div>
+
+    </section>
+
+    <!-- ================= FINAL ================= -->
+
+    <section class="pb-32 px-6">
+
+    <div class="max-w-5xl mx-auto">
+
+    <div class="rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-10 text-center">
+
+    <h2 class="text-5xl font-bold mb-8">
+
+    💌 One Last Thing...
+
+    </h2>
+
+    <p class="text-xl leading-10 text-gray-200">
+
+    Thank you for being you.
+    <br><br>
+
+    Thank you for always trying your best.
+    <br><br>
+
+    Please continue chasing your dreams.
+    <br><br>
+
+    I'll always be here cheering you on.
+    <br><br>
+
+    I love you endlessly.
+    <br><br>
+
+    <span class="text-yellow-300 font-bold">
+
+    — Your Biggest Fan 💙💛
+
+    </span>
+
+    </p>
+
+    </div>
+
+    </div>
+
+    </section>
+
+    <!-- Back to Top -->
+
+    <button
+    id="topBtn"
+    class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-yellow-400 text-black text-2xl shadow-xl">
+
+    ⬆
+
+    </button>
+
+    <!-- Music Button -->
+
+    <button
+    id="musicBtn"
+    class="fixed bottom-8 left-8 w-14 h-14 rounded-full bg-blue-500 text-white text-2xl shadow-xl">
+
+    🎵
+
+    </button>
+
+    <script>
+
+    // ===============================
+        // FLOATING HEARTS
+        // ===============================
+
+        const heartsContainer = document.getElementById("hearts");
+
+        const heartIcons = ["💙","💛","💖","✨"];
+
+        function createHeart(){
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = heartIcons[Math.floor(Math.random()*heartIcons.length)];
+
+            heart.style.left = Math.random()*100+"vw";
+
+            heart.style.animationDuration = (8+Math.random()*8)+"s";
+
+            heart.style.fontSize = (18+Math.random()*28)+"px";
+
+            heart.style.opacity = Math.random();
+
+            heartsContainer.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },16000);
+
+        }
+
+        setInterval(createHeart,350);
+
+        // ===============================
+        // SPARKLES
+        // ===============================
+
+        const sparkles = document.getElementById("sparkles");
+
+        for(let i=0;i<120;i++){
+
+            const star = document.createElement("div");
+
+            star.className="star";
+
+            star.style.left=Math.random()*100+"vw";
+
+            star.style.top=Math.random()*100+"vh";
+
+            star.style.animationDelay=Math.random()*3+"s";
+
+            star.style.opacity=Math.random();
+
+            sparkles.appendChild(star);
+
+        }
+
+        // ===============================
+        // FADE IN ON SCROLL
+        // ===============================
+
+        const observer=new IntersectionObserver(entries=>{
+
+        entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+        entry.target.classList.add("show");
+
+        }
+
+        });
+
+        },{
+        threshold:.15
+        });
+
+        document.querySelectorAll("section,.card").forEach(el=>{
+
+        el.classList.add("fade");
+
+        observer.observe(el);
+
+        });
+
+        // ===============================
+        // BACK TO TOP
+        // ===============================
+
+        const topBtn=document.getElementById("topBtn");
+
+        window.addEventListener("scroll",()=>{
+
+        if(window.scrollY>500){
+
+        topBtn.style.display="block";
+
+        }else{
+
+        topBtn.style.display="none";
+
+        }
+
+        });
+
+        topBtn.onclick=()=>{
+
+        window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+        });
+
+        };
+
+        // ===============================
+        // MUSIC BUTTON UI
+        // ===============================
+
+        let playing=false;
+
+        const music=document.getElementById("musicBtn");
+
+        music.onclick=()=>{
+
+        playing=!playing;
+
+        music.innerHTML=playing?"⏸️":"🎵";
+
+        music.style.transform="scale(1.2)";
+
+        setTimeout(()=>{
+
+        music.style.transform="scale(1)";
+
+        },200);
+
+        };
+
+        // ===============================
+        // HERO TYPEWRITER
+        // ===============================
+
+        const title=document.getElementById("typingTitle");
+
+        const text="I'm So Proud of You";
+
+        title.innerHTML="";
+
+        let index=0;
+
+        function typeWriter(){
+
+        if(index<text.length){
+
+        title.innerHTML+=text.charAt(index);
+
+        index++;
+
+        setTimeout(typeWriter,90);
+
+        }
+
+        }
+
+        typeWriter();
+
+        // ===============================
+        // HEART BURST
+        // ===============================
+
+        let firstClick=true;
+
+        document.addEventListener("click",(e)=>{
+
+        if(!firstClick)return;
+
+        firstClick=false;
+
+        for(let i=0;i<70;i++){
+
+        const burst=document.createElement("div");
+
+        burst.innerHTML=Math.random()>.5?"💙":"💛";
+
+        burst.style.position="fixed";
+
+        burst.style.left=e.clientX+"px";
+
+        burst.style.top=e.clientY+"px";
+
+        burst.style.fontSize=(18+Math.random()*18)+"px";
+
+        burst.style.pointerEvents="none";
+
+        burst.style.transition="1.8s ease-out";
+
+        burst.style.zIndex="9999";
+
+        document.body.appendChild(burst);
+
+        const x=(Math.random()-.5)*600;
+
+        const y=(Math.random()-.5)*600;
+
+        requestAnimationFrame(()=>{
+
+        burst.style.transform=`translate(${x}px,${y}px) rotate(${Math.random()*720}deg)`;
+
+        burst.style.opacity=0;
+
+        });
+
+        setTimeout(()=>{
+
+        burst.remove();
+
+        },1800);
+
+        }
+
+        });
+
+        // ===============================
+        // PARALLAX BACKGROUND
+        // ===============================
+
+        window.addEventListener("scroll",()=>{
+
+        document.body.style.backgroundPositionY=window.scrollY*0.15+"px";
+
+        });
+
+        // ===============================
+        // CARD TILT
+        // ===============================
+
+        document.querySelectorAll(".card").forEach(card=>{
+
+        card.addEventListener("mousemove",(e)=>{
+
+        const rect=card.getBoundingClientRect();
+
+        const x=e.clientX-rect.left;
+
+        const y=e.clientY-rect.top;
+
+        const rotateY=(x-rect.width/2)/15;
+
+        const rotateX=-(y-rect.height/2)/15;
+
+        card.style.transform=`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+
+        });
+
+        card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="";
+
+        });
+
+        });
+
+        // ===============================
+        // GLOW EFFECT
+        // ===============================
+
+        setInterval(()=>{
+
+        document.querySelectorAll(".rounded-3xl").forEach(card=>{
+
+        card.style.boxShadow=
+        `
+        0 0 ${20+Math.random()*30}px rgba(59,130,246,.4),
+        0 0 ${40+Math.random()*50}px rgba(250,204,21,.18)
+        `;
+
+        });
+
+        },2500);
+
+        // ===============================
+        // RANDOM TWINKLE EMOJIS
+        // ===============================
+
+        setInterval(()=>{
+
+        const sparkle=document.createElement("div");
+
+        sparkle.innerHTML=Math.random()>.5?"✨":"⭐";
+
+        sparkle.style.position="fixed";
+
+        sparkle.style.left=Math.random()*100+"vw";
+
+        sparkle.style.top=Math.random()*100+"vh";
+
+        sparkle.style.fontSize=(12+Math.random()*18)+"px";
+
+        sparkle.style.opacity=0;
+
+        sparkle.style.transition="2s";
+
+        sparkle.style.pointerEvents="none";
+
+        sparkle.style.zIndex="5";
+
+        document.body.appendChild(sparkle);
+
+        requestAnimationFrame(()=>{
+
+        sparkle.style.opacity=1;
+
+        sparkle.style.transform="translateY(-40px)";
+
+        });
+
+        setTimeout(()=>{
+
+        sparkle.style.opacity=0;
+
+        },1500);
+
+        setTimeout(()=>{
+
+        sparkle.remove();
+
+        },2200);
+
+        },700);
+    </script>
+
+    </body>
+</html>
