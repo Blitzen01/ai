@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Love 💛</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <style>
+        body {
+        overflow: hidden;
+        background: linear-gradient(135deg, #60a5fa, #93c5fd, #fde68a);
+        font-family: "Poppins", sans-serif;
+        }
+
+        .glass {
+        backdrop-filter: blur(14px);
+        background: rgba(255,255,255,.2);
+        border: 1px solid rgba(255,255,255,.35);
+        }
+
+        .heart {
+        position: absolute;
+        font-size: 24px;
+        animation: float 10s linear infinite;
+        opacity: .8;
+        }
+
+        @keyframes float {
+        from {
+            transform: translateY(110vh);
+        }
+        to {
+            transform: translateY(-120px);
+        }
+        }
+
+        .typing {
+        overflow: hidden;
+        border-right: 3px solid white;
+        white-space: nowrap;
+        animation: typing 5s steps(60,end), blink .8s infinite;
+        max-width: fit-content;
+        }
+
+        @keyframes typing {
+        from { width:0 }
+        to { width:100% }
+        }
+
+        @keyframes blink {
+        50% {
+            border-color: transparent;
+        }
+        }
+
+        .fade {
+        animation: fadeIn 2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+        from{
+            opacity:0;
+            transform:translateY(20px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+        }
+    </style>
+    </head>
+
+    <body class="flex items-center justify-center min-h-screen p-6">
+
+    <!-- Floating Hearts -->
+    <script>
+        const emojis = ["💙","💛","🤍","✨"];
+        for(let i=0;i<35;i++){
+        const e=document.createElement("div");
+        e.className="heart";
+        e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+        e.style.left=Math.random()*100+"vw";
+        e.style.animationDuration=(8+Math.random()*8)+"s";
+        e.style.fontSize=(18+Math.random()*18)+"px";
+        e.style.animationDelay=Math.random()*10+"s";
+        document.body.appendChild(e);
+        }
+    </script>
+
+    <!-- Card -->
+    <div class="glass rounded-3xl shadow-2xl max-w-3xl w-full p-8 md:p-12 text-center text-white fade">
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        Hello Love 💙💛
+        </h1>
+
+        <div class="flex justify-center mb-8">
+        <p class="typing text-lg md:text-xl font-semibold">
+            Kamusta ka today? 💙
+        </p>
+        </div>
+
+        <div class="space-y-5 text-lg leading-9">
+
+        <p>
+            Sana masaya ka today. 💛
+        </p>
+
+        <p>
+            Lagi ka pong mag-smile haaaa. 😊
+        </p>
+
+        <p>
+            Lagi mong tandaan na kahit anong pagsubok o problema ang dumating,
+            malalagpasan mo 'yan... malalagpasan natin 'yan.
+        </p>
+
+        <p>
+            Magtutulungan tayo palagi. Lagi kitang susuportahan sa lahat ng gusto mo,
+            at lagi akong magiging sandalan mo kapag mabigat na ang lahat.
+        </p>
+
+        <p>
+            Gusto kong maging karamay mo sa lahat—
+            sa mga hirap, sa mga saya, sa mga tagumpay,
+            at kahit sa mga araw na gusto mo lang ng yakap.
+        </p>
+
+        <p class="text-2xl font-bold mt-8">
+            I love you so much. 💙💛
+        </p>
+
+        </div>
+
+        <div class="mt-10">
+        <button onclick="window.location.href = 'index.html';"
+            class="px-6 py-3 rounded-full bg-white text-blue-500 font-bold hover:scale-105 transition">
+            ⬅ Back
+        </button>
+        </div>
+
+    </div>
+
+    </body>
+</html>
