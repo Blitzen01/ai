@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#0f1d35">
+<title>For You, My Love 💙💛</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-950:#0a1628;
+  --navy-900:#0f1d35;
+  --navy-800:#162544;
+  --navy-700:#1e3358;
+  --blue-600:#2563eb;
+  --blue-500:#3b82f6;
+  --blue-400:#60a5fa;
+  --blue-300:#93c5fd;
+  --blue-200:#bfdbfe;
+  --gold-500:#f59e0b;
+  --gold-400:#fbbf24;
+  --gold-300:#fcd34d;
+  --glass-bg:rgba(15,29,53,.55);
+  --glass-border:rgba(96,165,250,.18);
+  --text-primary:rgba(255,255,255,.92);
+  --text-secondary:rgba(191,219,254,.7);
+  --text-muted:rgba(147,197,253,.5);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Segoe UI','SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  background:linear-gradient(170deg,var(--navy-950) 0%,var(--navy-900) 35%,var(--navy-800) 70%,#1a2744 100%);
+  color:var(--text-primary);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+::selection{background:var(--gold-400);color:var(--navy-950)}
+:focus-visible{outline:2px solid var(--blue-400);outline-offset:2px;border-radius:6px}
+
+/* ================= FLOATING HEARTS ================= */
+#hearts-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.floating-heart{
+  position:absolute;bottom:-40px;
+  font-size:18px;line-height:1;
+  animation:floatUp var(--dur,7s) linear infinite;
+  animation-delay:var(--delay,0s);
+  opacity:0;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) translateX(0) scale(1) rotate(0deg);opacity:0}
+  8%{opacity:.55}
+  50%{opacity:.35}
+  100%{transform:translateY(calc(-110vh - 60px)) translateX(var(--drift,20px)) scale(.7) rotate(var(--spin,30deg));opacity:0}
+}
+
+/* ================= BACK BUTTON ================= */
+.back-btn{
+  position:fixed;top:max(1rem,env(safe-area-inset-top));left:max(1rem,env(safe-area-inset-left));
+  z-index:1500;width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(96,165,250,.2);cursor:pointer;
+  background:rgba(15,29,53,.6);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px -8px rgba(0,0,0,.4);
+  text-decoration:none;color:var(--blue-400);font-size:1.3rem;line-height:1;
+  transition:transform .3s,box-shadow .3s,background .3s;
+}
+.back-btn:hover{transform:translateY(-2px);background:rgba(15,29,53,.8);box-shadow:0 12px 28px -6px rgba(37,99,235,.3)}
+.back-btn:active{transform:scale(.94)}
+
+/* ================= MAIN CONTENT ================= */
+.content{
+  position:relative;z-index:10;max-width:640px;margin:0 auto;
+  padding:4rem 1.5rem 6rem;
+}
+
+/* ================= GLOWING HEART TOP ================= */
+.top-heart{
+  text-align:center;margin-bottom:2rem;
+  font-size:2.8rem;line-height:1;
+  animation:heartGlow 2.4s ease-in-out infinite;
+}
+@keyframes heartGlow{
+  0%,100%{filter:drop-shadow(0 0 12px rgba(96,165,250,.5)) drop-shadow(0 0 28px rgba(251,191,36,.3));transform:scale(1)}
+  50%{filter:drop-shadow(0 0 20px rgba(96,165,250,.7)) drop-shadow(0 0 40px rgba(251,191,36,.5));transform:scale(1.06)}
+}
+
+/* ================= HEADING ================= */
+.heading{text-align:center;margin-bottom:3rem}
+.heading h1{
+  font-size:clamp(1.6rem,6vw,2.4rem);font-weight:700;
+  background:linear-gradient(135deg,var(--blue-300) 0%,var(--blue-400) 40%,var(--gold-400) 80%,var(--gold-300) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:.6rem;
+}
+.heading .sub{
+  font-size:.95rem;color:var(--text-muted);letter-spacing:.04em;
+}
+
+/* ================= GLASS CARD ================= */
+.glass-card{
+  background:var(--glass-bg);
+  -webkit-backdrop-filter:blur(20px) saturate(1.2);
+  backdrop-filter:blur(20px) saturate(1.2);
+  border:1px solid var(--glass-border);
+  border-radius:24px;
+  padding:2.6rem 2rem 2.8rem;
+  box-shadow:0 32px 80px -24px rgba(0,0,0,.5),0 0 0 1px rgba(96,165,250,.06) inset;
+}
+
+/* ================= MESSAGE PARAGRAPHS ================= */
+.msg-para{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.22,1,.36,1);
+  margin-bottom:1.5rem;
+  font-size:1.02rem;color:var(--text-secondary);line-height:1.85;
+}
+.msg-para:last-child{margin-bottom:0}
+.msg-para.visible{opacity:1;transform:none}
+.msg-para .highlight{
+  color:var(--gold-400);font-weight:600;
+}
+.msg-para .soft{
+  color:var(--blue-300);
+}
+
+/* ================= PHOTO / SCREENSHOT ================= */
+.photo{
+  margin:1.6rem 0;text-align:center;
+  opacity:0;transform:translateY(22px);
+  transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1);
+}
+.photo.visible{opacity:1;transform:none}
+.photo-frame{
+  position:relative;overflow:hidden;
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  padding:.5rem;
+  background:rgba(9,20,40,.4);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 18px 50px -20px rgba(0,0,0,.55),0 0 0 1px rgba(96,165,250,.06) inset;
+}
+.photo-frame img{
+  display:block;width:100%;border-radius:14px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.3);
+}
+.photo-placeholder{
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  gap:.6rem;min-height:260px;width:100%;border-radius:14px;
+  border:2px dashed rgba(96,165,250,.28);
+  padding:1.5rem;
+}
+.photo-icon{font-size:2.4rem;opacity:.7}
+.photo-text{font-size:.92rem;color:var(--text-muted)}
+.photo-caption{
+  margin-top:1rem;font-size:.98rem;color:var(--text-secondary);
+  line-height:1.7;
+}
+.msg-divider{
+  text-align:center;color:var(--text-muted);letter-spacing:.5em;
+  margin:2rem 0;font-size:.85rem;
+  opacity:0;transition:opacity 1s ease .3s;
+}
+.msg-divider.visible{opacity:1}
+
+/* ================= CLOSING SECTION ================= */
+.closing{
+  text-align:center;margin-top:4rem;
+  opacity:0;transform:translateY(20px);
+  transition:opacity 1s ease,transform 1s ease;
+}
+.closing.visible{opacity:1;transform:none}
+.closing-heart{
+  font-size:clamp(3.5rem,14vw,5rem);line-height:1;margin-bottom:1.5rem;
+  animation:heartGlow 2.4s ease-in-out infinite;
+}
+.closing-words{
+  font-size:1.05rem;color:var(--text-secondary);line-height:1.9;
+}
+.closing-words span{
+  display:block;
+}
+.closing-words .love{
+  color:var(--gold-400);font-weight:600;
+}
+
+/* ================= SCROLL HINT ================= */
+.scroll-hint{
+  text-align:center;margin-top:2.5rem;
+  color:var(--text-muted);font-size:.82rem;
+  animation:breathe 3s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{opacity:.4}50%{opacity:.7}}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:480px){
+  .content{padding:3rem 1.1rem 4rem}
+  .glass-card{padding:2rem 1.4rem 2.2rem;border-radius:20px}
+  .back-btn{width:42px;height:42px;font-size:1.15rem}
+  .top-heart{font-size:2.4rem}
+  .msg-para{font-size:.98rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .msg-para,.msg-divider,.closing,.photo{opacity:1 !important;transform:none !important}
+}
+
+/* ================= LOCK SCREEN ================= */
+.lock-screen{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  background:linear-gradient(170deg,rgba(10,22,40,.94),rgba(15,29,53,.97));
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  opacity:1;visibility:visible;
+  transition:opacity .9s ease,visibility 0s linear .9s;
+}
+.lock-screen.unlocked{
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .9s ease,visibility 0s;
+}
+.lock-card{
+  width:100%;max-width:400px;text-align:center;
+  background:var(--glass-bg);
+  -webkit-backdrop-filter:blur(24px) saturate(1.3);
+  backdrop-filter:blur(24px) saturate(1.3);
+  border:1px solid var(--glass-border);
+  border-radius:28px;
+  padding:2.8rem 2.2rem 2.6rem;
+  box-shadow:0 40px 100px -24px rgba(0,0,0,.6),0 0 0 1px rgba(96,165,250,.06) inset;
+  animation:lockIn .9s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes lockIn{
+  from{opacity:0;transform:translateY(20px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+.lock-icon{
+  font-size:2.6rem;line-height:1;margin-bottom:1.2rem;
+  animation:heartGlow 2.4s ease-in-out infinite;
+}
+.lock-title{
+  font-size:clamp(1.3rem,5vw,1.65rem);font-weight:700;line-height:1.35;
+  color:var(--blue-200);margin-bottom:.6rem;
+}
+.lock-sub{
+  font-size:.95rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.8rem;
+}
+.lock-input{
+  width:100%;padding:1rem 1.1rem;border-radius:14px;
+  background:rgba(9,20,40,.65);
+  border:1px solid rgba(96,165,250,.25);
+  color:#fff;font-size:1.35rem;letter-spacing:.55em;text-align:center;
+  font-family:inherit;
+  transition:border-color .3s,box-shadow .3s;
+}
+.lock-input::placeholder{color:rgba(147,197,253,.4);letter-spacing:.3em}
+.lock-input:focus{
+  outline:none;border-color:rgba(96,165,250,.6);
+  box-shadow:0 0 0 3px rgba(96,165,250,.18),0 0 24px rgba(251,191,36,.12);
+}
+.lock-btn{
+  width:100%;margin-top:1rem;
+  border:none;cursor:pointer;font-family:inherit;font-weight:700;
+  font-size:1.05rem;letter-spacing:.02em;color:#fff;
+  padding:1rem 2rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--blue-600),var(--blue-400) 50%,var(--gold-400));
+  background-size:200% 200%;background-position:0% 0%;
+  box-shadow:0 16px 34px -12px rgba(37,99,235,.55);
+  transition:transform .3s,box-shadow .3s,background-position .4s;
+}
+.lock-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(37,99,235,.65),0 0 24px rgba(251,191,36,.45);background-position:100% 100%}
+.lock-btn:active{transform:translateY(-1px) scale(.98)}
+.lock-error{
+  min-height:1.6em;margin-top:1rem;font-size:.95rem;
+  color:var(--gold-300);line-height:1.5;
+}
+.lock-hint{font-size:.82rem;color:var(--text-muted);margin-top:.4rem}
+@media(max-width:480px){
+  .lock-card{padding:2.2rem 1.5rem 2rem;border-radius:22px}
+}
+</style>
+</head>
+<body>
+
+<div id="hearts-bg" aria-hidden="true"></div>
+
+<a href="index.html" class="back-btn" aria-label="Back to home" title="Back to home">←</a>
+
+<!-- ================= LOCK SCREEN ================= -->
+<div id="lock-screen" class="lock-screen" role="dialog" aria-modal="true" aria-labelledby="lock-title">
+  <div class="lock-card">
+    <div class="lock-icon" aria-hidden="true">💙</div>
+    <h2 id="lock-title" class="lock-title">May Sinasabi Ako Sa'yo, Mahal 💙💛</h2>
+    <p class="lock-sub">Ilagay mo lang ang araw na espesyal para sa atin para mabuksan ang aking sulat.</p>
+    <input id="lock-input" class="lock-input" type="password" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="••••••" aria-label="Password" aria-describedby="lock-error">
+    <button id="lock-btn" class="lock-btn" type="button">Unlock 💙💛</button>
+    <p id="lock-error" class="lock-error" aria-live="polite"></p>
+    <p class="lock-hint">hint: the day we share 💙</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="top-heart" aria-hidden="true">💙</div>
+
+  <div class="heading">
+    <h1>For You, My Love 💙💛</h1>
+    <p class="sub">A letter from the heart</p>
+  </div>
+
+  <div class="glass-card">
+
+    <p class="msg-para">
+      Akala ko magiging okay tayo ngayong gabi. Akala ko magiging masaya tayo at makakapagkwentuhan tayo nang maayos. Pero nauwi tayo sa away <span class="highlight">dahil lang sa gusto kong maging safe ka.</span>
+    </p>
+
+    <p class="msg-para">
+      Yes, may part sa akin na naghihinala, at gusto kong maging honest tungkol doon. Pero sana, instead na magalit tayo sa isa't isa, nabigyan mo rin sana ako ng <span class="soft">assurance</span>. Sana, instead na pareho tayong mag-init ang ulo, nagawa nating <span class="highlight">huminahon at pag-usapan nang maayos</span> ang nararamdaman natin.
+    </p>
+
+    <p class="msg-para">
+      Umabot pa tayo sa point na naungkat 'yung tungkol sa bulaklak. To be honest, <span class="highlight">bibigyan sana talaga kita ng bulaklak</span> kapag nagkita tayo. Inaantay ko lang na dumating.
+    </p>
+
+    <!-- PICTURE: save your phone screenshot as images/order-screenshot.jpg (JPG/PNG) -->
+    <figure class="photo">
+      <div class="photo-frame" id="photo-frame">
+        <img src="images/ss_flower.jpg" alt="Screenshot ng order" onerror="this.style.display='none';document.getElementById('photo-placeholder').style.display='flex';document.getElementById('photo-frame').style.borderStyle='dashed'">
+        <div class="photo-placeholder" id="photo-placeholder">
+          <span class="photo-icon">🖼️</span>
+          <span class="photo-text">Ilagay dito ang screenshot ng order mo</span>
+        </div>
+      </div>
+      <figcaption class="photo-caption">Eto 'yung inorder ko nang maaga, mahal. Inaantay ko lang talaga na dumating. 💙💛</figcaption>
+    </figure>
+
+    <div class="msg-divider">· · ·</div>
+
+    <p class="msg-para">
+      Hindi ko sana gustong bigyan ka ng bulaklak dahil sinabi mo iyon o dahil napag-usapan natin. <span class="soft">Gusto sana kitang bigyan ng random flowers</span>, as something special for you, at para makabawi rin ako sa'yo.
+    </p>
+
+    <p class="msg-para">
+      Pero ngayon, hindi ko alam kung paano mo iisipin kapag binigay ko na iyon sa'yo. Baka isipin mo na ginagawa ko lang dahil sinabi mo. Pero <span class="highlight">hindi talaga ganoon.</span>
+    </p>
+
+    <p class="msg-para">
+      Nalulungkot lang ako kasi akala ko magiging masaya tayo ngayong gabi. Hindi ko inaasahan na aabot tayo sa ganito. <span class="soft">Gusto ko lang naman maging okay tayo</span>, maging safe ka, at sana matutunan nating pag-usapan ang mga problema natin nang hindi agad nauuwi sa galit.
+    </p>
+
+    <div class="msg-divider">· · ·</div>
+
+    <p class="msg-para">
+      <span class="highlight">Mahal kita.</span> At kahit nasasaktan ako ngayon, <span class="highlight">gusto ko pa ring maging okay tayo.</span>
+    </p>
+
+  </div>
+
+  <div class="closing">
+    <div class="closing-heart" aria-hidden="true">💙💛</div>
+    <div class="closing-words">
+      <span>I still care.</span>
+      <span>I still love you.</span>
+      <span class="love">I just wish tonight went differently.</span>
+    </div>
+  </div>
+
+  <p class="scroll-hint">— with all my love —</p>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var hearts = document.getElementById('hearts-bg');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Password Lock ---------- */
+  var lockScreen = document.getElementById('lock-screen');
+  var lockInput = document.getElementById('lock-input');
+  var lockBtn = document.getElementById('lock-btn');
+  var lockError = document.getElementById('lock-error');
+  var PASSWORD = '040826';
+
+  document.body.style.overflow = 'hidden';
+  lockInput.focus();
+
+  function unlock() {
+    if (lockInput.value.trim() === PASSWORD) {
+      lockError.textContent = '';
+      lockScreen.classList.add('unlocked');
+      lockScreen.setAttribute('aria-modal', 'false');
+      document.body.style.overflow = '';
+      lockInput.blur();
+    } else {
+      lockError.textContent = "That's not the right password, love \u{1F97A} Try again \u{1F499}";
+      lockInput.select();
+      lockInput.focus();
+    }
+  }
+
+  lockBtn.addEventListener('click', unlock);
+  lockInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') unlock();
+  });
+
+  /* ---------- Floating Hearts ---------- */
+  function createHearts() {
+    if (reduceMotion) return;
+    var chars = ['💙','💛'];
+    var count = Math.min(20, Math.round(window.innerWidth / 55));
+    for (var i = 0; i < count; i++) {
+      var h = document.createElement('span');
+      h.className = 'floating-heart';
+      h.textContent = chars[Math.random() < 0.5 ? 0 : 1];
+      h.style.left = (Math.random() * 100) + '%';
+      h.style.fontSize = (14 + Math.random() * 12) + 'px';
+      h.style.setProperty('--dur', (8 + Math.random() * 10) + 's');
+      h.style.setProperty('--delay', (Math.random() * 12) + 's');
+      h.style.setProperty('--drift', (-30 + Math.random() * 60) + 'px');
+      h.style.setProperty('--spin', (-20 + Math.random() * 40) + 'deg');
+      hearts.appendChild(h);
+    }
+  }
+  createHearts();
+
+  /* ---------- Scroll Reveal ---------- */
+  var reveals = document.querySelectorAll('.msg-para, .msg-divider, .closing, .photo');
+
+  if (reduceMotion) {
+    for (var j = 0; j < reveals.length; j++) {
+      reveals[j].classList.add('visible');
+    }
+    return;
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    for (var k = 0; k < entries.length; k++) {
+      if (entries[k].isIntersecting) {
+        entries[k].target.classList.add('visible');
+        observer.unobserve(entries[k].target);
+      }
+    }
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  for (var i = 0; i < reveals.length; i++) {
+    observer.observe(reveals[i]);
+  }
+})();
+</script>
+</body>
+</html>
